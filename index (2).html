@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo" id="reload-logo">
+                <i class="fas fa-cloud-sun"></i> Weather Dashboard
+            </div>
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for a city...">
+                    <button class="clear-btn" title="Clear search">×</button>
+                    <div class="search-results"></div>
+                </div>
+                <button class="toggle-btn" id="location-btn" title="Use current location">
+                    <i class="fas fa-location-dot"></i>
+                </button>
+                <button class="toggle-btn" id="unit-toggle" title="Toggle temperature unit">
+                    <i class="fas fa-temperature-high"></i>
+                </button>
+                <button class="toggle-btn" id="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="recent-cities" id="recent-cities"></div>
+    </header>
+
+    <main class="main-weather">
+        <div class="current-weather animate-in">
+            <div class="weather-info">
+                <h2 class="city-name">Loading...</h2>
+                <p id="date-time"></p>
+                <div class="temperature">--°C</div>
+                <p class="weather-description">-</p>
+                <img src="" alt="Weather icon" class="weather-icon">
+            </div>
+            <div class="weather-details">
+                <div class="detail-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Feels Like</h3>
+                    <p id="feels-like">--°C</p>
+                    <p class="detail-description">How the temperature actually feels, considering wind and humidity.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-droplet"></i>
+                    <h3>Humidity</h3>
+                    <p id="humidity">--%</p>
+                    <p class="detail-description">Amount of water vapor in the air. High humidity can make it feel hotter.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Wind Speed</h3>
+                    <p id="wind-speed">-- km/h</p>
+                    <p class="detail-description">Speed of the wind. Higher speeds can make it feel cooler.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-compress-alt"></i>
+                    <h3>Pressure</h3>
+                    <p id="pressure">-- hPa</p>
+                    <p class="detail-description">Atmospheric pressure. Changes can indicate upcoming weather changes.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-smog" id="aqi-icon"></i>
+                    <h3>AQI</h3>
+                    <p id="aqi">-- (--)</p>
+                    <p class="detail-description">Air Quality Index. Measures pollution levels in the air.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-section">
+            <h2 class="section-title">24-Hour Forecast</h2>
+            <div class="hourly-forecast" id="hourly-forecast"></div>
+        </div>
+
+        <div class="forecast-section">
+            <h2 class="section-title">5-Day Forecast</h2>
+            <div class="daily-forecast" id="daily-forecast"></div>
+        </div>
+
+        <div class="map-section">
+            <h2 class="section-title">Location on Map</h2>
+            <div id="map" style="height: 400px; width: 100%; border-radius: 20px;"></div>
+            <iframe id="windy-map" src="" style="height: 400px; width: 100%; border-radius: 20px; margin-top: 1rem; display: none;"></iframe>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
